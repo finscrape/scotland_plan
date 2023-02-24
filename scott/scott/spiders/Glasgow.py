@@ -1,13 +1,15 @@
 import scrapy
 import scrapy
-import scrapy
-import scrapy
 from urllib.parse import urlparse
 from pymongo import MongoClient
 import certifi
 ca = certifi.where()
 import pymongo
 import scrapy
+import json
+    
+from scott.utils0 import cookies_parsel
+
 from time import sleep
 
 
@@ -22,10 +24,11 @@ class GlasgowSpider(scrapy.Spider):
         self.key = 0
         self.num = 0
         self.planning = None
+        self.ind = 0
 
     def start_requests(self):
         #moray,perth,west dunbarnton
-        ii = ['https://publicaccess.glasgow.gov.uk/online-applications/search.do?action=property&type=atoz']
+        ii = ['https://publicaccess.glasgow.gov.uk/online-applications/simpleSearchResults.do?action=firstPage']
 
         #connecting to mongo
         URI = 'mongodb://0.tcp.eu.ngrok.io:17433'
@@ -57,54 +60,41 @@ class GlasgowSpider(scrapy.Spider):
 
         
         
-        for i in ii:
+        numb = list(range(0,1000000))
+        for i in numb:
+            self.ind +=1
+            print(self.ind)
+            print(self.ind)
+            print(self.ind)
+            print(self.ind)
+            print(self.ind)
+            ii = ['https://publicaccess.glasgow.gov.uk/online-applications/simpleSearchResults.do?action=firstPage']
+            head = 'https://publicaccess.glasgow.gov.uk'
+            
+            pay = f'_csrf=42fda3e6-c490-4b8d-ac86-7c59d1428b5a&searchType=Application&searchCriteria.caseStatus=&searchCriteria.simpleSearchString={i}&searchCriteria.simpleSearch=true'
+            headers = {
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+                'Accept-Encoding': 'gzip, deflate, br',
+                'Accept-Language': 'en-US,en;q=0.9,ru;q=0.8,fa;q=0.7',
+                'Cache-Control': 'no-cache',
+                'Connection': 'keep-alive',
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Host': 'publicaccess.glasgow.gov.uk',
+                'Origin': 'https://publicaccess.glasgow.gov.uk',
+                'Pragma': 'no-cache',
+                'Referer': 'https://publicaccess.glasgow.gov.uk/online-applications/search.do?action=simple'
+
+            }
+
+            yield scrapy.Request(url=ii[0],method='POST',body =pay,headers=headers,cookies=cookies_parsel(),meta={'h':head},dont_filter=True)
+            
         
+
+
         
-        
-        
-            yield scrapy.Request(url=i,meta={'f':i})
     def parse(self, response):
-        fir = response.meta['f']
-        head = urlparse(fir).netloc
-        h = f'https://{head}'
-        
-        
-        first = f'{fir}&letter=A'
-        l = response.xpath("//li/a[contains(@title,'Streets beginning with the letter')]/@href").getall()
-        l.append(first)
-        for i in l:
-            if 'http' not in i:
-                i = f'{h}{i}'
-            
-                yield scrapy.Request(url=i,dont_filter=True,callback=self.each,meta={'h':h})
-            else:
-                yield scrapy.Request(url=i,dont_filter=True,callback=self.each,meta={'h':h})
-
-
-    def each(self,response):
         h = response.meta['h']
-        next = response.xpath("(//a[text()='Next']/@href)[1]").get()
-        
-        l = response.xpath("//ul[@id='streetlist']/li/a/@href").getall()
-        for i in l:
-            if 'http' not in i:
-                i = f'{h}{i}'
-                yield scrapy.Request(url=i,meta={'h':h},callback=self.street)
-            else:
-                yield scrapy.Request(url=i,meta={'h':h},callback=self.street)
-            
-
-        if next:
-
-            ab_next = f'{h}{next}'
-            yield scrapy.Request(url=ab_next,callback=self.each,meta={'h':h})
-            print('mooooooooooooooooooooooving one battch')
-
-        
-
-    def street(self,response):
-        h = response.meta['h']
-        urp = response.xpath("//th[text()='UPRN:']/following-sibling::td/text()").get()
+        ref = response.xpath("//th[contains(text(),'Reference')]/following-sibling::td/text()").get()
         next = response.xpath("(//a[text()='Next']/@href)[1]").get()
         
         link = response.xpath("//ul[@id='searchresults']/li/a/@href").getall()
@@ -112,7 +102,8 @@ class GlasgowSpider(scrapy.Spider):
             for i in link:
                 ii = f'{h}{i}'
                 yield scrapy.Request(url=ii,callback=self.pty,meta={'h':h})
-        elif urp is not None:
+                print(f'link:{ii}')
+        elif ref is not None:
             current = response.url
             yield scrapy.Request(url=current,callback=self.pty,meta={'h':h},dont_filter=True)
 
@@ -121,21 +112,36 @@ class GlasgowSpider(scrapy.Spider):
         
         if next:
             ab_next = f'{h}{next}'
-            yield scrapy.Request(url=ab_next,callback=self.street,meta={'h':h})
-            
+            yield scrapy.Request(url=ab_next,callback=self.parse,meta={'h':h})
+
+                    
     def pty(self,response):
+        h = response.meta['h']
+        link = response.xpath("//li/a[@id='tab_relatedCases']/@href").get()
+        if link:
+            a_link = f'{h}{link}'
+            yield scrapy.Request(url=a_link,meta={'h':h},callback=self.info,dont_filter=True)
+
+    def info(self,response):
+        h = response.meta['h']
+        
+        link = response.xpath("//div[@id='relatedItems']/div[@id='Property']/descendant::a/@href").get()
+        a_li = f'{h}{link}'
+        yield scrapy.Request(url=a_li,meta={'h':h},callback=self.las,dont_filter=True)
+
+    def las(self,response):
         h = response.meta['h']
         urpn = response.xpath("//th[text()='UPRN:']/following-sibling::td/text()").get()
         link = response.xpath("//li/a[contains(span/text(),'Property History')]/@href").get()
         if link:
             a_link = f'{h}{link}'
-            yield scrapy.Request(url=a_link,meta={'h':h,'u':urpn},callback=self.info)
+            yield scrapy.Request(url=a_link,meta={'h':h,'u':urpn},callback=self.infoo)
 
-    def info(self,response):
+    def infoo(self,response):
         h = response.meta['h']
         u = response.meta['u']
         
-        link = response.xpath("//div[@id='relatedItems']/div")
+        link = response.xpath("//div[@id='relatedItems']/div[@id='Application']")
         for i in link[0:1]:
             title = i.xpath('.//@id').get()
             li = i.xpath(".//ul/li/a/@href").getall()
@@ -145,7 +151,10 @@ class GlasgowSpider(scrapy.Spider):
                         a_li = f'{h}{i}'
                         yield scrapy.Request(url=a_li,meta={'h':h,'t':title,'u':u},callback=self.last)
 
+
+
     def last(self,response):
+        
         dic = {}
         urpn = response.meta['u']
         title = response.meta['t']
@@ -171,13 +180,23 @@ class GlasgowSpider(scrapy.Spider):
             a_status = response.xpath("normalize-space(//table[@id='simpleDetailsTable']/tr[10]/td/descendant::text())").get()    
             a_decision = response.xpath("normalize-space(//table[@id='simpleDetailsTable']/tr[11]/td/descendant::text())").get()    
             doc = response.xpath("//li[contains(a/span/text(),'Documents')]/a/@href").get()
-            docu = f'{h}{doc}'
+            if doc:
+                docu = f'{h}{doc}'
+            else:
+                docu = None
 
             rela = response.xpath("//li[contains(a/span/text(),'Related')]/a/@href").get()
-            related = f'{h}{rela}'
+            if rela:
+                related = f'{h}{rela}'
+            else:
+                related = None
 
             cont = response.xpath("//li[contains(a/span/text(),'Contacts')]/a/@href").get()
-            contacts = f'{h}{cont}'
+            if cont:
+                contacts = f'{h}{cont}'
+            else:
+                contacts = None
+
             self.num += 1
             self.key = f'{urpn}-{reference}-{addr}'
 
