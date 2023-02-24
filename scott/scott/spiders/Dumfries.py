@@ -57,7 +57,7 @@ class DumfriesSpider(scrapy.Spider):
             ii = ['https://eaccess.dumgal.gov.uk/online-applications/simpleSearchResults.do?action=firstPage']
             head = 'https://eaccess.dumgal.gov.uk'
             
-            pay = f'org.apache.struts.taglib.html.TOKEN=a69b4c19eed2be9d3533a44d354b0675&_csrf=0584b99b-c133-402d-b609-1f38c795e674&searchType=Application&searchCriteria.caseStatus=&searchCriteria.simpleSearchString=2300&searchCriteria.simpleSearch=true'
+            pay = f'org.apache.struts.taglib.html.TOKEN=a69b4c19eed2be9d3533a44d354b0675&_csrf=0584b99b-c133-402d-b609-1f38c795e674&searchType=Application&searchCriteria.caseStatus=&searchCriteria.simpleSearchString={i}&searchCriteria.simpleSearch=true'
             headers = {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
                 'Accept-Encoding': 'gzip, deflate, br',
