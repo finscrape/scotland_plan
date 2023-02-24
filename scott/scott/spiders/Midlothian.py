@@ -222,7 +222,7 @@ class MidlothianSpider(scrapy.Spider):
                 
             }
             try:
-                #self.planning.insert_one(result)
+                self.planning.insert_one(result)
                 yield result
             except:
                 print(f'{reference} exists in database!')
