@@ -103,6 +103,17 @@ def cookies_parsei():
         parsed_cookie[key] = morsel.value
     
     return parsed_cookie
+
+
+def cookies_parsej():
+    cookie_string = 'JSESSIONID=ipaxdrjhR-g2fJTbT70OjIChpGu4A3TmtDUnIxH5.lap-pubacc2'
+    cookie = SimpleCookie()
+    cookie.load(cookie_string)
+    parsed_cookie = {}
+    for key,morsel in cookie.items():
+        parsed_cookie[key] = morsel.value
+    
+    return parsed_cookie
 # def params():
 #     param = 'searchQueryState=%7B%22pagination%22%3A%7B%22currentPage%22%3A2%7D%2C%22usersSearchTerm%22%3A%22New%20York%2C%20NY%22%2C%22mapBounds%22%3A%7B%22west%22%3A-74.4009301328125%2C%22east%22%3A-73.5549828671875%2C%22south%22%3A40.45035852051812%2C%22north%22%3A40.96047101556829%7D%2C%22regionSelection%22%3A%5B%7B%22regionId%22%3A6181%2C%22regionType%22%3A6%7D%5D%2C%22isMapVisible%22%3Afalse%2C%22filterState%22%3A%7B%22price%22%3A%7B%22min%22%3A100000%2C%22max%22%3A500000%7D%2C%22monthlyPayment%22%3A%7B%22min%22%3A323%2C%22max%22%3A1617%7D%2C%22isAllHomes%22%3A%7B%22value%22%3Atrue%7D%7D%2C%22isListVisible%22%3Atrue%7D&wants={%22cat1%22:[%22listResults%22]}&requestId=5'
 #     cookie = SimpleCookie()
