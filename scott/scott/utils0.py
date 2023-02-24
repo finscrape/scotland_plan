@@ -3,7 +3,7 @@ from urllib.parse import urlparse, parse_qs, urlencode
 import json
 
 def cookies_parse():
-    cookie_string = 'JSESSIONID=-a75qzsrtrU5rY5z_G9rqrOqGjyeH8_bQNykteR9.pawebhst25a; citrix_ns_id_.aberdeencity.gov.uk_%2F_wat=AAAAAAX-fxbTjbZnSuIOoYiD-hQCqWn8CVA3NnOW48pKmJgDfvF_qU4s1Bq3I9QLGTbwsrqFzUehTzL24T_V_Kv7ucJ2#guYNW/k4KwVU9addMBooLYQJNuQA& '
+    cookie_string = 'JSESSIONID=kNUKq54myYT2OO0Kx0cDQ6FvNXzfXuLvBPKkbuSp.pawebhst25a; citrix_ns_id_.aberdeencity.gov.uk_%2F_wat=AAAAAAVycSCoY-cWtMtclwuOZetKza_B2kN2lCFFA9mQOd8a_srNIXls1AXRdFy37d4JltW0yBzLiSPG0GtQDvSFKWfR#guYNW/k4KwVU9addMBooLYQJNuQA&'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
