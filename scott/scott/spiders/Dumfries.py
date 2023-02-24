@@ -52,7 +52,7 @@ class DumfriesSpider(scrapy.Spider):
                 break
         #end
 
-        numb = list(range(1000,1000000))
+        numb = list(range(0,1000000))
         for i in numb:
             ii = ['https://eaccess.dumgal.gov.uk/online-applications/simpleSearchResults.do?action=firstPage']
             head = 'https://eaccess.dumgal.gov.uk'
