@@ -44,7 +44,7 @@ def cookies_parsec():
     return parsed_cookie
 
 def cookies_parsed():
-    cookie_string = 'JSESSIONID=3CQ4aGBDQO33iMSzifN8QdJ6DFH0EgBOzYqWUBX4.pawebhst39a; citrix_ns_id_.clacks.gov.uk_%2F_wat=AAAAAAU3t4DqXAH-AnDN4hk7Sj46ENXmsgnPEeUtWuqaiAvd293Cw2UcwAxicRTi5faawsQrZ7mL8tmui4azxzYFlTCn#MKWRAxvxfrLD5WG+jw7Oiw2P/gUA&'
+    cookie_string = 'JSESSIONID=YXsz29o5QsoWxvUUjsucO_-lUrmNRyIelANltDIa.pawebhst39a; citrix_ns_id_.clacks.gov.uk_%2F_wat=AAAAAAUHD3J1ff5YtSL1vPRbCszM0XU6w21NJkZMFG3EtXM7RQwwZjAx9v0fdtcHnc-KprdxKwhT2EYb9Spz1cl7HNrA#MKWRAxvxfrLD5WG+jw7Oiw2P/gUA&'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
