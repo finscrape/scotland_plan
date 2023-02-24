@@ -163,3 +163,13 @@ def cookies_parsep():
         parsed_cookie[key] = morsel.value
     
     return parsed_cookie
+
+def cookies_parseq():
+    cookie_string = 'JSESSIONID=uKkRY02TYJpQgxmglxlPKMYQXs8P-gMkHaoxy7r_.dcepidx002'
+    cookie = SimpleCookie()
+    cookie.load(cookie_string)
+    parsed_cookie = {}
+    for key,morsel in cookie.items():
+        parsed_cookie[key] = morsel.value
+    
+    return parsed_cookie
