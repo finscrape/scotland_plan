@@ -13,7 +13,7 @@ def cookies_parse():
     return parsed_cookie
 
 def cookies_parsea():
-    cookie_string = ' JSESSIONID=5AlwHc7ZdWnzWU3bWAi2gz39W2gMWeHVjdBuXwDF.absvapp026c; __utma=215625555.836780687.1677231574.1677231574.1677231574.1; __utmc=215625555; __utmz=215625555.1677231574.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmt=1; __utmb=215625555.8.10.1677231574'
+    cookie_string = 'JSESSIONID=6WUh4OniHbSmAlW8cz6FXFv1U_0UAvWKJ_usBHsN.absvapp026c; __utmc=215625555; __utmz=215625555.1677231574.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=215625555.836780687.1677231574.1677231574.1677240011.2; __utmt=1; __utmb=215625555.7.10.1677240011'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
