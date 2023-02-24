@@ -23,7 +23,7 @@ def cookies_parsea():
     return parsed_cookie
 
 def cookies_parseb():
-    cookie_string = ' JSESSIONID=ND472KEzaW04OYx2KpMAa_szdw800ZpuSK3QbE7h.dcepidx002'
+    cookie_string = '_csrf=91729362-3ae8-4617-acb8-da7b290206d0&searchType=Application&searchCriteria.caseStatus=&searchCriteria.simpleSearchString=1000&searchCriteria.simpleSearch=true'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
