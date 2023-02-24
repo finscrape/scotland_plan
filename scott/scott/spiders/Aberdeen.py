@@ -60,7 +60,7 @@ class AberdeenSpider(scrapy.Spider):
             ii = ['https://publicaccess.aberdeencity.gov.uk/online-applications/simpleSearchResults.do?action=firstPage']
             head = 'https://publicaccess.aberdeencity.gov.uk'
             
-            pay = f'_csrf=2c5d01d5-0d80-4839-8a0f-fc452c6a3cfb&searchType=Application&searchCriteria.caseStatus=&searchCriteria.simpleSearchString=23022&searchCriteria.simpleSearch=true'
+            pay = f'_csrf=2c5d01d5-0d80-4839-8a0f-fc452c6a3cfb&searchType=Application&searchCriteria.caseStatus=&searchCriteria.simpleSearchString={i}&searchCriteria.simpleSearch=true'
             headers = {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
                 'Accept-Encoding': 'gzip, deflate, br',
