@@ -35,23 +35,23 @@ class AngusSpider(scrapy.Spider):
         client = MongoClient(URI)
 
         db = client.get_database('scotland')
-        self.planning = db.Angus_Council
+        self.planning = db.Anguss_Council
         count = 0
         while True:
             try:
                 self.planning.create_index([('Check', pymongo.ASCENDING)], unique=True)
-                print('Angus Connected successfully')
+                print('Anguss Connected successfully')
                 sts = True
             except:
                 count += 1
                 print(f'Failed ...retrying {count} times')
 
-                URI = 'mongodb://0.tcp.eu.ngrok.io:17433'
+                URI = 'mongodb://6.tcp.eu.ngrok.io:13312'
 
                 client = MongoClient(URI)
 
                 db = client.get_database('scotland')
-                self.planning = db.Angus_Council
+                self.planning = db.Anguss_Council
                 sts = False
 
             if sts:
