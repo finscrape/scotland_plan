@@ -8,10 +8,9 @@ import pandas as pd
 
 from random import choice
 
-plist = pd.read_csv('scott\data1.csv')
+#plist = pd.read_csv('scott\data1.csv')
 
-proxy = plist['ips'].to_list()
-
+proxy = []
 
 
 # Scrapy settings for scott project
