@@ -8,9 +8,6 @@ from scott.utils import proxylist
 
 from random import choice
 
-plist = pd.read_csv('scott\data1.csv')
-
-proxy = plist['ips'].to_list()
 
 
 
