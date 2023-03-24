@@ -144,8 +144,8 @@ def cookies_parseglg():
     
     return parsed_cookie
 
-def cookies_parsen():
-    cookie_string = 'JSESSIONID=L92q3H63bkCAZE8QonBDa9GnC8DMvb4RtOTbAr-9.invidoxweb2'
+def cookies_parsehig():
+    cookie_string = 'JSESSIONID=h5e7fYe_eTeRFHcJfzStIQDCyWS4IjtL9-zobXEf.pawebhst17a; citrix_ns_id_.highland.gov.uk_%2F_wat=AAAAAAWFGPfIsbWHrG8pnOUQTvK_idweiSEvTPgIpIZUW1QaJWsqD4MFxqnKAIp88DXstlDvTw2YpX6nASYvOr7s-Zui#O5/8TkatWotXuO7O313UTD03u3oA&; CookieControl={"necessaryCookies":[],"optionalCookies":{},"statement":{"shown":true,"updated":"09/07/2020"},"consentDate":1679692845768,"consentExpiry":90,"interactedWith":true,"user":"59D4446B-F49E-43F9-8C6D-3D4CE276C3CE"}'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -154,8 +154,8 @@ def cookies_parsen():
     
     return parsed_cookie
 
-def cookies_parseo():
-    cookie_string = 'JSESSIONID=YUV-3WQP93hbciQAheAvaeHfCV5CHgVw5GBbKcfw.idoxweb; __utma=250927186.418910463.1677255242.1677255242.1677255242.1; __utmc=250927186; __utmz=250927186.1677255242.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmt=1; __utmb=250927186.4.10.1677255242'
+def cookies_parseinv():
+    cookie_string = 'JSESSIONID=6LfH2tvPSKvxi6vI0uDrBGdtGYYjR3zuUsoOVFzy.invidoxweb2'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -164,8 +164,8 @@ def cookies_parseo():
     
     return parsed_cookie
 
-def cookies_parsep():
-    cookie_string = 'JSESSIONID=ovsJeH5qqAU6fiBn2CzYOhGK34Hx6bC2Ij_6ijVE.pawebhst49a; citrix_ns_id_.midlothian.gov.uk_%2F_wat=AAAAAAVPHZ1V1oujBbWRjuUxntk4_sMwhmw8pa9hZVFHCvdhgcJKkBSV6KEgivrrDc2X6SEbqnxPb-U9zEzs4Hv1O2MY#dcLYf+bC79jQY1XncvhA9CvOlKsA&'
+def cookies_parselol():
+    cookie_string = 'JSESSIONID=GTABRGZpzMq0aWrZZvB1SQlS28RlTB0BxJbyU2Yo.idoxweb; __utma=250927186.1449960811.1679693627.1679693627.1679693627.1; __utmc=250927186; __utmz=250927186.1679693627.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmt=1; __utmb=250927186.2.10.1679693627'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -174,7 +174,7 @@ def cookies_parsep():
     
     return parsed_cookie
 
-def cookies_parseq():
+def cookies_parsemid():
     cookie_string = 'JSESSIONID=uKkRY02TYJpQgxmglxlPKMYQXs8P-gMkHaoxy7r_.dcepidx002'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
@@ -184,7 +184,7 @@ def cookies_parseq():
     
     return parsed_cookie
 
-def cookies_parser():
+def cookies_parsemor():
     cookie_string = 'JSESSIONID=QYAjaBiV8xaBLJuhf-S0o524NhXl2_DCEYER1U1s.oic-vedrms-web2'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
@@ -193,6 +193,106 @@ def cookies_parser():
         parsed_cookie[key] = morsel.value
     
     return parsed_cookie
+
+
+def cookies_parsenoa():
+    cookie_string = 'JSESSIONID=AmVrlktVZ4K1d_1o6hxDqmrt7ylbQkD4ATqE3xYz.naveplanwam2'
+    cookie = SimpleCookie()
+    cookie.load(cookie_string)
+    parsed_cookie = {}
+    for key,morsel in cookie.items():
+        parsed_cookie[key] = morsel.value
+    
+    return parsed_cookie
+
+
+def cookies_parsenol():
+    cookie_string = 'JSESSIONID=YbaegG30fftuEUeHNTU0QfoDmHuu-oIHkBu2hixP.ukspnlanipawb01'
+    cookie = SimpleCookie()
+    cookie.load(cookie_string)
+    parsed_cookie = {}
+    for key,morsel in cookie.items():
+        parsed_cookie[key] = morsel.value
+    
+    return parsed_cookie
+
+
+def cookies_parseoid():
+    cookie_string = 'JSESSIONID=9qkWHZWgnX80-Ujcf-PLVoZbNTyJ19cQ3HQ0ZMO8.oic-vedrms-web2'
+    cookie = SimpleCookie()
+    cookie.load(cookie_string)
+    parsed_cookie = {}
+    for key,morsel in cookie.items():
+        parsed_cookie[key] = morsel.value
+    
+    return parsed_cookie
+def cookies_parseper():
+    cookie_string = 'JSESSIONID=LacLRw35aCDcPgWwu9M-cogEbrxYSDc29TulJUUD.perwebidoxpa; _ga=GA1.1.820367051.1678376383; _ga_PB86DF8R71=GS1.1.1678376383.1.1.1678377080.0.0.0'
+    cookie = SimpleCookie()
+    cookie.load(cookie_string)
+    parsed_cookie = {}
+    for key,morsel in cookie.items():
+        parsed_cookie[key] = morsel.value
+    
+    return parsed_cookie
+def cookies_parseref():
+    cookie_string = 'JSESSIONID=2xFhMjr_BPmQuIAuuoV9jDeVrPjs71Nn8K2scbKK.vmsgofw-unipal; TS013efb75=018d8f6012ae21f605d89a1bbc8d084717957988df0c637ddf1acaf1125de6fce60f70568a8d460b8dbddcdeba611df3c3560f288c2ef3ed6fe14041b25ccf9bdb0408d9c3; TS014f6f63=018d8f6012a18fe80c13faa27d7039d47bd70dcb4a7b5652300b60f9702b211462dc80c92747fe40a55d723d7004cbde4a5580c947'
+    cookie = SimpleCookie()
+    cookie.load(cookie_string)
+    parsed_cookie = {}
+    for key,morsel in cookie.items():
+        parsed_cookie[key] = morsel.value
+    
+    return parsed_cookie
+
+def cookies_parsesco():
+    cookie_string = 'JSESSIONID=yjx9t1O4Lw6qUzLg3aSe3Hh_CEduGMnabfcmzPNz.hq-pa-web; cookiesession1=678B286E975DC7BEEAADB8484B95904B'
+    cookie = SimpleCookie()
+    cookie.load(cookie_string)
+    parsed_cookie = {}
+    for key,morsel in cookie.items():
+        parsed_cookie[key] = morsel.value
+    
+    return parsed_cookie
+
+def cookies_parseshi():
+    cookie_string = 'JSESSIONID=iWbslkrwkiwBvJ9SplaF7F3fENtzCYp9TqO-Mf2n.uniformpa19; cookiesession1=678A3E2A5E1FAD39B02301BCD2843A6D'
+    cookie = SimpleCookie()
+    cookie.load(cookie_string)
+    parsed_cookie = {}
+    for key,morsel in cookie.items():
+        parsed_cookie[key] = morsel.value
+    
+    return parsed_cookie
+
+def cookies_parsesoa():
+    cookie_string = 'JSESSIONID=Mo6Jt9ti5fBMnDd7kf7H7DwFELALtf2iAGXwuwQn.pawebhst45a; citrix_ns_id_.south-ayrshire.gov.uk_%2F_wat=AAAAAAXkvykmffHosxjKkqlHTlUQ8fgdbow2WA2m_jhnnZ7Npzj9s0tKwulGjhPcz6n3flwwJT8FiVYqs83eLkqfzYSY#guYNW/k4KwVU9addMBooLYQJNuQA&'
+    cookie = SimpleCookie()
+    cookie.load(cookie_string)
+    parsed_cookie = {}
+    for key,morsel in cookie.items():
+        parsed_cookie[key] = morsel.value
+    
+    return parsed_cookie
+def cookies_parsesol():
+    cookie_string = 'JSESSIONID=gPEqVjLYp3KlyvKRZtAMBoZbssR6Z2vXRGtXPDjJ.ceridxpweblv'
+    cookie = SimpleCookie()
+    cookie.load(cookie_string)
+    parsed_cookie = {}
+    for key,morsel in cookie.items():
+        parsed_cookie[key] = morsel.value
+    
+    return parsed_cookie
+def cookies_parsesti():
+    cookie_string = 'JSESSIONID=TVne1Kxu7ArTiCYTPnjwl3n-FIS-vLe1uEmOeA9T.paweblive'
+    cookie = SimpleCookie()
+    cookie.load(cookie_string)
+    parsed_cookie = {}
+    for key,morsel in cookie.items():
+        parsed_cookie[key] = morsel.value
+    
+    return parsed_cookie
+
 # def params():
 #     param = 'searchQueryState=%7B%22pagination%22%3A%7B%22currentPage%22%3A2%7D%2C%22usersSearchTerm%22%3A%22New%20York%2C%20NY%22%2C%22mapBounds%22%3A%7B%22west%22%3A-74.4009301328125%2C%22east%22%3A-73.5549828671875%2C%22south%22%3A40.45035852051812%2C%22north%22%3A40.96047101556829%7D%2C%22regionSelection%22%3A%5B%7B%22regionId%22%3A6181%2C%22regionType%22%3A6%7D%5D%2C%22isMapVisible%22%3Afalse%2C%22filterState%22%3A%7B%22price%22%3A%7B%22min%22%3A100000%2C%22max%22%3A500000%7D%2C%22monthlyPayment%22%3A%7B%22min%22%3A323%2C%22max%22%3A1617%7D%2C%22isAllHomes%22%3A%7B%22value%22%3Atrue%7D%7D%2C%22isListVisible%22%3Atrue%7D&wants={%22cat1%22:[%22listResults%22]}&requestId=5'
 #     cookie = SimpleCookie()
