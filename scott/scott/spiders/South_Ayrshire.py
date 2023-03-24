@@ -1,5 +1,4 @@
-import scrapy
-import scrapy
+from scrapy.selector import Selector
 import scrapy
 import scrapy
 from urllib.parse import urlparse
@@ -8,8 +7,14 @@ import certifi
 ca = certifi.where()
 import pymongo
 import scrapy
-from scott.utils import string
+import pandas as pd
+from scrapy_selenium import SeleniumRequest
+from scott.utils0 import cookies_parsesoa
+codes = pd.read_csv('unique_postcodes.csv')
 
+pcode = list(codes['postcode'])
+    
+from scott.utils import string
 
 
 class SouthAyrshireSpider(scrapy.Spider):
@@ -30,14 +35,14 @@ class SouthAyrshireSpider(scrapy.Spider):
 
     def start_requests(self):
         #moray,perth,west dunbarnton
-        ii = ['https://publicaccess.south-ayrshire.gov.uk/online-applications/search.do?action=property&type=atoz']
+        ii = ['https://publicaccess.south-ayrshire.gov.uk/online-applications/propertySearchResults.do?action=firstPage']
         
         #connecting to mongo
         URI = string
         client = MongoClient(URI)
 
         db = client.get_database('scotland')
-        self.planning = db.South_Ayrshire_Council
+        self.planning = db.South_Ayrshire_Councils
 
         count = 0
         while True:
@@ -51,117 +56,91 @@ class SouthAyrshireSpider(scrapy.Spider):
                 URI = string
                 client = MongoClient(URI)
                 db = client.get_database('scotland')
-                self.planning = db.South_Ayrshire_Council
+                self.planning = db.South_Ayrshire_Councils
                 sts = False
             
             if sts:
                 break
 
-        #end
+        #mongo end connect
 
-
-
+        for i in ii[0:]:
+            xx = 0
+            head = urlparse(i).netloc
+            h = f'https://{head}'
         
-        for i in ii:
-        
-            yield scrapy.Request(url=i,meta={'f':i})
+            for p in pcode:
+                    
+                    xx += 1
+                    print(f'Scraped {xx} links......{p}')
+                    print(f'Scraped {xx} links......{p}')
+                    
+                    tx = f'_csrf=c5a8eeb8-7379-49c9-acd0-da65caf854a9&searchCriteria.uprn=&searchCriteria.propertyNameNumber=&searchCriteria.streetName=&searchCriteria.locality=&searchCriteria.town=&searchCriteria.postCode={p}&searchType=Property'
+                    yield scrapy.Request(url=i,meta={'f':i,'p':p,'h':h},dont_filter= True,callback=self.parse,cookies=cookies_parsesoa(),method='POST',body=tx)
+
     def parse(self, response):
-        fir = response.meta['f']
-        head = urlparse(fir).netloc
-        h = f'https://{head}'
-        
-        
-        first = f'{fir}&letter=A'
-        l = response.xpath("//li/a[contains(@title,'Streets beginning with the letter')]/@href").getall()
-        l.append(first)
-        for i in l:
-            if 'http' not in i:
-                i = f'{h}{i}'
-                yield scrapy.Request(url=i,dont_filter=True,callback=self.each,meta={'h':h})
-            else:
-                yield scrapy.Request(url=i,dont_filter=True,callback=self.each,meta={'h':h})
-        
-        
-
-    def each(self,response):
-        
+        # pgs = 'Empty'
         h = response.meta['h']
-        next = response.xpath("(//a[text()='Next']/@href)[1]").get()
-        
-        l = response.xpath("//ul[@id='streetlist']/li/a/@href").getall()
-        self.alp += l
-
-        
             
 
-        if next:
+        # driver = response.meta['driver']
 
-            ab_next = f'{h}{next}'
-            yield scrapy.Request(url=ab_next,callback=self.each,meta={'h':h},dont_filter=True)
-            print('mooooooooooooooooooooooving one battch')
+
+        # inp = driver.find_element_by_xpath("//input[@name='searchCriteria.postCode']")
+
+        # inp.send_keys(p)
+
+        # sub = driver.find_element_by_xpath("//input[@value='Search']")
+
+        # sub.click()
+
+        # pgs = driver.page_source
+
+        # htmx = Selector(text=pgs)
+
+        box = response.xpath("//ul[@id='searchresults']")
+
+        if box:
+            link = response.xpath("//ul[@id='searchresults']/li/a/@href").getall()
+            for i in link:
+                i_next = f'{h}{i}'
+                yield scrapy.Request(url=i_next,callback=self.each,meta={'h':h})
+
         else:
-            for i in self.alp:
-                a = i
-                self.alp.remove(a)
-                alen = len(self.alp)
-                if 'http' not in i:
-                    i = f'{h}{i}'
-                    yield scrapy.Request(url=i,meta={'h':h,'alen':alen},callback=self.street)
-                else:
-                    yield scrapy.Request(url=i,meta={'h':h,'alen':alen},callback=self.street)
-            
-
+            pass
         
-
-    def street(self,response):
-            
-
-        h = response.meta['h']
-        urp = response.xpath("//th[text()='UPRN:']/following-sibling::td/text()").get()
+        
+        
         next = response.xpath("(//a[text()='Next']/@href)[1]").get()
-        
-        link = response.xpath("//ul[@id='searchresults']/li/a/@href").getall()
-        if link:
-            self.streetl += link
-        elif urp is not None:
-            current = response.url
-            self.streetl.append(current)
-            #yield scrapy.Request(url=current,callback=self.pty,meta={'h':h},dont_filter=True)
-
-        
-        
         
         if next:
             ab_next = f'{h}{next}'
-            yield scrapy.Request(url=ab_next,callback=self.street,meta={'h':h})
+            yield scrapy.Request(url=ab_next,callback=self.parse,meta={'h':h})
         else:
             pass
 
-        # print(len(self.streetl))
-        # print(len(self.streetl))
-        # print(len(self.streetl))
-        # print(len(self.streetl))
-        # print('before')
-    
 
-        for i in list(set(self.streetl)):
-            #self.streetl.remove(i)
-            if 'http' in i:
+    # def next(self,response):
+    #     h = response.meta['h']
 
-                yield scrapy.Request(url=i,callback=self.pty,meta={'h':h})
-            else:
-                i = f'{h}{i}'
-                yield scrapy.Request(url=i,callback=self.pty,meta={'h':h})
+    #     link = response.xpath("//ul[@id='searchresults']/li/a/@href").getall()
+    #     for i in link:
+    #         i_next = f'{h}{i}'
+    #         yield scrapy.Request(url=i_next,callback=self.each,meta={'h':h})
 
-        # print('length')
-        # print(len(self.streetl))
-        # print(len(self.streetl))
-        # print(len(self.streetl))
+    #     next = response.xpath("(//a[text()='Next']/@href)[1]").get()
+        
+    #     if next:
+    #         ab_next = f'{h}{next}'
+    #         yield scrapy.Request(url=ab_next,callback=self.next,meta={'h':h})
+    #     else:
+    #         pass
 
 
 
-            
-    def pty(self,response):
+
+    def each(self,response):
+
         h = response.meta['h']
         address = {}
         urpn = response.xpath("//th[text()='UPRN:']/following-sibling::td/text()").get()
@@ -178,7 +157,21 @@ class SouthAyrshireSpider(scrapy.Spider):
             yield scrapy.Request(url=a_link,meta={'h':h,'u':urpn,'uul':urpn_url,'ptaddr':address,'pthis':a_link},callback=self.info,dont_filter=True)
         else:
             
-            yield scrapy.Request(url=urpn_url,meta={'h':h,'u':urpn,'uul':urpn_url,'ptaddr':address,'pthis':None},callback=self.info,dont_filter=True)
+            lirl = response.url
+            self.key = f'{urpn}-{lirl}'
+            one_result = {
+                'URPN':urpn,
+                'URPN_Link':urpn_url,
+                'Address':address,
+                'Property_History':None,
+                'Planning_Applications':None,
+                'Check':self.key
+            }
+            try:
+                self.planning.insert_one(one_result)
+                yield one_result
+            except:
+                print(f'{urpn} exists in database!')
 
 
     def info(self,response):
@@ -193,27 +186,14 @@ class SouthAyrshireSpider(scrapy.Spider):
         if link:
             self.pllinks = 0
             link.append('https://www.nairaland.com/')
-            yield scrapy.Request(url=lirl,callback=self.new,meta={'h':h,'u':u,'uul':uul,'ptaddr':ptaddr,'pthis':pthis,'cc':link,'dd':0})        
-        else:
-            if u:
+            
+            for i in link:
 
-                pl_app = None
-                self.key = f'{u}-{lirl}'
-                one_result = {
-                    'URPN':u,
-                    'URPN_Link':uul,
-                    'Address':ptaddr,
-                    'Property_History':pthis,
-                    'Planning_Applications':pl_app,
-                    'Check':self.key
-                }
-                try:
-                    self.planning.insert_one(one_result)
-                    yield one_result
-                except:
-                    print(f'{u} exists in database!')
-            else:
-                yield scrapy.Request(url=uul,callback=self.street,meta={'h':h})
+                if 'http' not in i:
+                    ii = f'{h}{i}'
+                else:
+                    ii = i
+                yield scrapy.Request(url=ii,callback=self.new,meta={'h':h,'u':u,'uul':uul,'ptaddr':ptaddr,'pthis':pthis,'cc':link,'dd':0})     
 
     def new(self,response):
         h = response.meta['h']
@@ -279,16 +259,28 @@ class SouthAyrshireSpider(scrapy.Spider):
             
         if len(self.li) > 0:
             one = self.li[0]
-            if 'nairaland' in one:
-                one_link = f'{one}'
+
+            if 'nairaland' in one and len(self.li) > 1:
+                one = self.li[1]
+                one_link = f'{h}{one}'
+            elif 'nairaland' not in one:
+                 one_link = f'{h}{one}'
+            
             
             else:
-                one_link = f'{h}{one}'
+                one = self.li[0]
+                one_link = f'{one}'
+
             
+
+
+            
+            
+           
             print(one_link)
             print(one_link)
             print(one_link)
-            if one_link == 'https://www.nairaland.com/':
+            if one_link == 'https://www.nairaland.com/' and len(self.li) == 1 :
                 copy = self.all_pl
                 yield scrapy.Request(url=lirl,dont_filter=True,callback=self.last,meta={'h':h,'u':u,'pl':copy,'uul':uul,'ptaddr':ptaddr,'pthis':pthis,'c':self.li})
                 self.all_pl = {}
@@ -304,14 +296,7 @@ class SouthAyrshireSpider(scrapy.Spider):
             
 
             
-
-            
-            
-        
-
-
-    
-            
+   
     def last(self,response):
         h = response.meta['h']
         u = response.meta['u']
@@ -343,7 +328,6 @@ class SouthAyrshireSpider(scrapy.Spider):
 
             except:
                 print(f'{u} exists in database!')
-        else:
-            yield scrapy.Request(url=uul,callback=self.street,meta={'h':h})
-
+        
+    
     
