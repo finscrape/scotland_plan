@@ -36,7 +36,7 @@ def cookies_parseang():
 
 
 def cookies_parseclk():
-    cookie_string = 'JSESSIONID=sc0lK5ezLiJQC-cbkgZThCMDnkaFJNlhCuDdAv5n.pawebhst39a; citrix_ns_id_.clacks.gov.uk_%2F_wat=AAAAAAU2RpQrZ81FIns9jSrf1EPOBG2wnBgC9ABjgbVL4SgCxi5_c9TopHJkppF4u6ITzTBtgPAjD-T5-7FRPmyWUtSE#MKWRAxvxfrLD5WG+jw7Oiw2P/gUA&'
+    cookie_string = 'JSESSIONID=HLUQpDWuwJoZEFGNJg0vRLifM1V2iQTQNsIs94v3.pawebhst39a; citrix_ns_id_.clacks.gov.uk_%2F_wat=AAAAAAUw5YMTkQx6nDqM3_m9Xm9TGfyLE08bE_31Vt0AwHU1MQ2olMf_l3zYZ-iVdyWf00VZ3ujRUuAsL_6EAIV0KRuk#MKWRAxvxfrLD5WG+jw7Oiw2P/gUA&'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -46,7 +46,7 @@ def cookies_parseclk():
     return parsed_cookie
 
 def cookies_parsedum():
-    cookie_string = 'JSESSIONID=IcVirKIbE8nROoITqvfNxk8-3dRlw1SCzbpzniPf.pawebhst26a; citrix_ns_id_.dumgal.gov.uk_%2F_wat=AAAAAAXwJBzZos5N7_ob8wqlifs15YekzD709L472eIElVUp9YuJ62t77l4UbNFNDXU2x8CKFYivAGfyuGr3pSOSw3F5#guYNW/k4KwVU9addMBooLYQJNuQA&'
+    cookie_string = 'JSESSIONID=uPp30J9siV97F7fjiu1kEAsbnzMhaLmXNICHKcco.pawebhst26a; citrix_ns_id_.dumgal.gov.uk_%2F_wat=AAAAAAVs-Cc9B-o-Q9sF-_LEVl86mmHA2bNuNFVPHokHRQl-YOLFKTPp1S8NL0WdoajQTm6bAsK_YO1k_S_1YDw_pCpX#guYNW/k4KwVU9addMBooLYQJNuQA&'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -56,7 +56,7 @@ def cookies_parsedum():
     return parsed_cookie
 
 def cookies_parsedun():
-    cookie_string = 'JSESSIONID=StyfpokY4CZ7SpsF6nZ4E6EHwkmlWKO9-m1cRzR5.2012-idox-iis; __utmc=49359486; __utmz=49359486.1679736213.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=49359486.1559562858.1679736213.1679736213.1679757044.2; __utmt=1; __utmb=49359486.1.10.1679757044'
+    cookie_string = 'JSESSIONID=g02xeS4P8-nQCifHOAvfU9NfP5m8Z60SIn3NVoxh.2012-idox-iis; __utmc=49359486; __utmz=49359486.1679665633.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=49359486.506477386.1679665633.1679665633.1679839459.2; __utmt=1; __utmb=49359486.2.10.1679839459'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -66,7 +66,7 @@ def cookies_parsedun():
     return parsed_cookie
 
 def cookies_parseeas():
-    cookie_string = 'JSESSIONID=jL15KiPgarvrhuVV99O3cw9Y2I6CJhMvn0M3jf1Z.edmsweb03; CookieControl={"necessaryCookies":[],"optionalCookies":{"analytics":"accepted"},"statement":{"shown":true,"updated":"29/11/2019"},"consentDate":1679666751326,"consentExpiry":90,"interactedWith":true,"user":"4A6CFBA8-25EE-4789-9948-9641E4A1FA9B"}'
+    cookie_string = 'JSESSIONID=zyEPTfiJyowJkrLk0sLZAcKuh9lWKak_P3xA3r2l.edmsweb03'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
