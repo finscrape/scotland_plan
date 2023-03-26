@@ -74,13 +74,13 @@ class AngusSpider(scrapy.Spider):
             head = urlparse(i).netloc
             h = f'https://{head}'
         
-            for p in pcode:
+            for p in pcode[50000:100000]:
                     
                     xx += 1
                     print(f'Scraped {xx} links......{p}')
                     print(f'Scraped {xx} links......{p}')
                     
-                    tx = f'org.apache.struts.taglib.html.TOKEN=89e0910197a2346b294aeab6e8758aff&_csrf=8bee0309-0477-43e1-b815-4e9459aa0ab8&searchCriteria.uprn=&searchCriteria.propertyNameNumber=&searchCriteria.streetName=&searchCriteria.locality=&searchCriteria.town=&searchCriteria.postCode={p}&searchType=Property'
+                    tx = f'_csrf=fe48104a-9a18-4549-9e5f-ab8df6185d37&searchCriteria.uprn=&searchCriteria.propertyNameNumber=&searchCriteria.streetName=&searchCriteria.locality=&searchCriteria.town=&searchCriteria.postCode={p}&searchType=Property'
                     yield scrapy.Request(url=i,meta={'f':i,'p':p,'h':h},dont_filter= True,callback=self.parse,cookies=cookies_parseang(),method='POST',body=tx)
 
     def parse(self, response):
@@ -315,24 +315,24 @@ class AngusSpider(scrapy.Spider):
         
         
         self.key = f'{u}-{lirl}'
-        if u:
-            onee_result = {
-                'URPN':u,
-                'URPN_Link':uul,
-                'Address':ptaddr,
-                'Property_History':pthis,
-                'Planning_Applications':copy,
-                'Check':self.key
-
-            }
-            print(onee_result)
-            try:
-                self.planning.insert_one(onee_result)
-                yield onee_result
-                
-
-            except:
-                print(f'{u} exists in database!')
-        
     
+        onee_result = {
+            'URPN':u,
+            'URPN_Link':uul,
+            'Address':ptaddr,
+            'Property_History':pthis,
+            'Planning_Applications':copy,
+            'Check':self.key
+
+        }
+        print(onee_result)
+        try:
+            self.planning.insert_one(onee_result)
+            yield onee_result
+            
+
+        except:
+            print(f'{u} exists in database!')
+    
+
     
