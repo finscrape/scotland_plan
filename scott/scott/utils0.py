@@ -66,7 +66,7 @@ def cookies_parsedun():
     return parsed_cookie
 
 def cookies_parseeas():
-    cookie_string = 'JSESSIONID=zyEPTfiJyowJkrLk0sLZAcKuh9lWKak_P3xA3r2l.edmsweb03'
+    cookie_string = 'JSESSIONID=Grl5YAq6uN-WJCnQNtVsMESpaTmIQ4XQVIICIDmW.edmsweb03'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
