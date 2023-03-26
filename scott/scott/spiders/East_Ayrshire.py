@@ -72,7 +72,7 @@ class EastAyrshireSpider(scrapy.Spider):
             head = urlparse(i).netloc
             h = f'https://{head}'
         
-            for p in pcode[50000:100000]:
+            for p in pcode[100000:]:
                     
                     xx += 1
                     print(f'Scraped {xx} links......{p}')
