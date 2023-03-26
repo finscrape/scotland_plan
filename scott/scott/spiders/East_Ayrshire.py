@@ -72,13 +72,13 @@ class EastAyrshireSpider(scrapy.Spider):
             head = urlparse(i).netloc
             h = f'https://{head}'
         
-            for p in pcode:
+            for p in pcode[50000:100000]:
                     
                     xx += 1
                     print(f'Scraped {xx} links......{p}')
                     print(f'Scraped {xx} links......{p}')
                     
-                    tx = f'_csrf=bb14f047-2d3b-4c4e-b07b-53a0b54d8c37&searchCriteria.uprn=&searchCriteria.propertyNameNumber=&searchCriteria.streetName=&searchCriteria.locality=&searchCriteria.town=&searchCriteria.postCode={p}&searchType=Property'
+                    tx = f'_csrf=419be349-8b94-476e-a2e0-414baaeb29a5&searchCriteria.uprn=&searchCriteria.propertyNameNumber=&searchCriteria.streetName=&searchCriteria.locality=&searchCriteria.town=&searchCriteria.postCode={p}&searchType=Property'
                     yield scrapy.Request(url=i,meta={'f':i,'p':p,'h':h},dont_filter= True,callback=self.parse,cookies=cookies_parseeas(),method='POST',body=tx)
 
     def parse(self, response):
@@ -313,24 +313,23 @@ class EastAyrshireSpider(scrapy.Spider):
         
         
         self.key = f'{u}-{lirl}'
-        if u:
-            onee_result = {
-                'URPN':u,
-                'URPN_Link':uul,
-                'Address':ptaddr,
-                'Property_History':pthis,
-                'Planning_Applications':copy,
-                'Check':self.key
 
-            }
-            print(onee_result)
-            try:
-                self.planning.insert_one(onee_result)
-                yield onee_result
-                
+        onee_result = {
+            'URPN':u,
+            'URPN_Link':uul,
+            'Address':ptaddr,
+            'Property_History':pthis,
+            'Planning_Applications':copy,
+            'Check':self.key
 
-            except:
-                print(f'{u} exists in database!')
-        
+        }
+        print(onee_result)
+        try:
+            self.planning.insert_one(onee_result)
+            yield onee_result
+            
+
+        except:
+            print(f'{u} exists in database!')
     
-    
+
