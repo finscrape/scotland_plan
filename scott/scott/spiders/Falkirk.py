@@ -68,13 +68,13 @@ class FalkirkSpider(scrapy.Spider):
             head = urlparse(i).netloc
             h = f'https://{head}'
         
-            for p in pcode:
+            for p in pcode[50000:100000]:
                     
                     xx += 1
                     print(f'Scraped {xx} links......{p}')
                     print(f'Scraped {xx} links......{p}')
                     
-                    tx = f'_csrf=4c48a8b2-66b3-4465-b894-07dc17618f84&searchCriteria.uprn=&searchCriteria.propertyNameNumber=&searchCriteria.streetName=&searchCriteria.locality=&searchCriteria.town=&searchCriteria.postCode={p}&searchType=Property'
+                    tx = f'org.apache.struts.taglib.html.TOKEN=c0dc599e6fb965163b330b7ae8499bfc&_csrf=6c810654-1d6e-471a-8385-6c5a323cbc47&searchCriteria.uprn=&searchCriteria.propertyNameNumber=&searchCriteria.streetName=&searchCriteria.locality=&searchCriteria.town=&searchCriteria.postCode={p}&searchType=Property'
                     yield scrapy.Request(url=i,meta={'f':i,'p':p,'h':h},dont_filter= True,callback=self.parse,cookies=cookies_parseflk(),method='POST',body=tx)
 
     def parse(self, response):

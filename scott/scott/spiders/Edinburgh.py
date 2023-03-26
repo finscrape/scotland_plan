@@ -69,13 +69,13 @@ class EdinburghSpider(scrapy.Spider):
             head = urlparse(i).netloc
             h = f'https://{head}'
         
-            for p in pcode:
+            for p in pcode[50000:100000]:
                     
                     xx += 1
                     print(f'Scraped {xx} links......{p}')
                     print(f'Scraped {xx} links......{p}')
                     
-                    tx = f'_csrf=1c1d3e37-7050-4025-9158-d1554407e26c&searchCriteria.uprn=&searchCriteria.propertyNameNumber=&searchCriteria.streetName=&searchCriteria.locality=&searchCriteria.town=&searchCriteria.postCode={p}&searchType=Property'
+                    tx = f'org.apache.struts.taglib.html.TOKEN=ce15ca517c826e0364e9df5e9e2fa2ee&_csrf=eb612b3d-5aae-464c-bd88-e7779dca5e06&searchCriteria.uprn=&searchCriteria.propertyNameNumber=&searchCriteria.streetName=&searchCriteria.locality=&searchCriteria.town=&searchCriteria.postCode={p}&searchType=Property'
                     yield scrapy.Request(url=i,meta={'f':i,'p':p,'h':h},dont_filter= True,callback=self.parse,cookies=cookies_parseedb(),method='POST',body=tx)
 
     def parse(self, response):

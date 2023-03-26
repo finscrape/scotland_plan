@@ -70,13 +70,13 @@ class SouthLanarkshireSpider(scrapy.Spider):
             head = urlparse(i).netloc
             h = f'https://{head}'
         
-            for p in pcode:
+            for p in pcode[50000:100000]:
                     
                     xx += 1
                     print(f'Scraped {xx} links......{p}')
                     print(f'Scraped {xx} links......{p}')
                     
-                    tx = f'_csrf=8e462b40-b28a-42bb-9d7b-3032e28a1c4e&searchCriteria.uprn=&searchCriteria.propertyNameNumber=&searchCriteria.streetName=&searchCriteria.locality=&searchCriteria.town=&searchCriteria.postCode={p}&searchType=Property'
+                    tx = f'_csrf=edd436f2-3dc5-47a9-9b65-db1605abef0c&searchCriteria.uprn=&searchCriteria.propertyNameNumber=&searchCriteria.streetName=&searchCriteria.locality=&searchCriteria.town=&searchCriteria.postCode={p}&searchType=Property'
                     yield scrapy.Request(url=i,meta={'f':i,'p':p,'h':h},dont_filter= True,callback=self.parse,cookies=cookies_parsesol(),method='POST',body=tx)
 
     def parse(self, response):
