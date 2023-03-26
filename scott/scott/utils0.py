@@ -5,7 +5,7 @@ import json
 global cook
 cook ='JSESSIONID=HxONPhQnL8_nXyYic2SY1l4GuGv178ixRcIvOBRK.pawebhst25a; citrix_ns_id_.aberdeencity.gov.uk_%2F_wat=AAAAAAW9ibEh6Zp6YlyTDBayUG3yS7YcYfLCt6jwBg2w1gbP7Sq5JojSPbv-Zi2sSMlPkc8BUn8O8NKQWe5BPm6KIkS3#guYNW/k4KwVU9addMBooLYQJNuQA&'
 def cookies_parse():
-    cookie_string = 'JSESSIONID=c-wXxYreJ_8xcsW86d8kQzw5_fiR71-JzjkKhLZ5.pawebhst25a; citrix_ns_id_.aberdeencity.gov.uk_%2F_wat=AAAAAAWVaKZ2JUoY1Nn7Xh0mgEcSIox4pctPOiAdKaTs-W8bL6SR9pKc8CFBYnbkSTqI61j3OBQ2KJIQwc4uKgKHnWTd#guYNW/k4KwVU9addMBooLYQJNuQA&'
+    cookie_string = 'JSESSIONID=kafMKh1hgyydIv7n9Zp4XGmnd1r-6c8tLcPHbBQT.pawebhst25a; citrix_ns_id_.aberdeencity.gov.uk_%2F_wat=AAAAAAUHxsG6Zg1aiTglCkSNF_aLcRJhYJ-p1XiyWz74C8RTjdBCQx1FusPgooYwil05AuuYH9LkrSHDjFRxWaLccJ03#guYNW/k4KwVU9addMBooLYQJNuQA&'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -15,7 +15,7 @@ def cookies_parse():
     return parsed_cookie
 
 def cookies_parseabs():
-    cookie_string = 'JSESSIONID=ka_Qfh_RgPajiS9MxwsIESRtfmUScvbWHHGkPMSR.absvapp026c; __utmc=215625555; __utmz=215625555.1679449546.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=215625555.18175734.1679449546.1679751644.1679756357.5; __utmt=1; __utmb=215625555.1.10.1679756357'
+    cookie_string = 'JSESSIONID=ka_Qfh_RgPajiS9MxwsIESRtfmUScvbWHHGkPMSR.absvapp026c; __utmc=215625555; __utmz=215625555.1679449546.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=215625555.18175734.1679449546.1679756357.1679834499.6; __utmt=1; __utmb=215625555.1.10.1679834499'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -25,7 +25,7 @@ def cookies_parseabs():
     return parsed_cookie
 
 def cookies_parseang():
-    cookie_string = 'JSESSIONID=hNfILIIKza2nU53ubs9d5GS3KPXVnMTh-YaBtRAC.dcepidx002'
+    cookie_string = 'JSESSIONID=xKqEuGp6pjk8dbSadyIaToFXMW41pkyD7brNzjL1.dcepidx002'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -127,7 +127,7 @@ def cookies_parseflk():
     return parsed_cookie
 
 def cookies_parsefif():
-    cookie_string = 'JSESSIONID=aSjS3i5Gwn3yFoJLrC0un6NMlbS19nSWFbO8t4iy.idoxweb-live'
+    cookie_string = 'JSESSIONID=vSpLGToMG074vWz54Q1UD3GQE0g_QdmRUAgYI9X7.s-fk-ep-paweb'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -198,7 +198,7 @@ def cookies_parsemor():
 
 
 def cookies_parsenoa():
-    cookie_string = 'JSESSIONID=G6XTLJKkhLV1KM2R1mcjlkfQ-_huEatWe6Z_HsHg.naveplanwam2'
+    cookie_string = 'JSESSIONID=HjZMA4Ck0DyjC7B_FvtWGYJC_oLpnwbwuNgmvmMZ.naveplanwam2'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -229,7 +229,7 @@ def cookies_parseoid():
     
     return parsed_cookie
 def cookies_parseper():
-    cookie_string = 'JSESSIONID=ul9mJveH-ga_u21NALZLBnY3b7TI_a-ffCXGGYqI.perwebidoxpa; _ga=GA1.1.820367051.1678376383; _ga_PB86DF8R71=GS1.1.1679788360.2.1.1679788369.0.0.0'
+    cookie_string = 'JSESSIONID=vXl1IJznr6SFdcZXA5wt6-Micdza5TBykaMbHyNg.perwebidoxpa; _ga=GA1.1.820367051.1678376383; _ga_PB86DF8R71=GS1.1.1679788360.2.1.1679788369.0.0.0'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -238,7 +238,7 @@ def cookies_parseper():
     
     return parsed_cookie
 def cookies_parseref():
-    cookie_string = 'JSESSIONID=jypoGBuKB0g11gAe7gHC1wnKn3zjASp0j1th0h2U.vmsgofw-unipal; TS013efb75=018d8f6012789678ee212ee3a74be0e49175347be30c637ddf1acaf1125de6fce60f70568a8d460b8dbddcdeba611df3c3560f288c82cf2e579463427aa6bcd910a97d3d61; TS014f6f63=018d8f601215371de070c300d4b788e24a0a090b56a7e2a4a07cf03c37f86864749b374f9b65b2b099f0b03f8d88114fc3b06a4dce'
+    cookie_string = 'JSESSIONID=GKNgl4_A5sEfPh0Ui2AG25IujWuBjiLLZR3sEa3l.vmsgofw-unipal; TS013efb75=018d8f6012f3b30743b78f3220c82da7640c66c6880c637ddf1acaf1125de6fce60f70568a8d460b8dbddcdeba611df3c3560f288c3b7a86d6aca317ecec8a153a4293040d; TS014f6f63=018d8f6012c6640f5513c08524bcf1aa6f06fb131cf506f86aa4d00fd23c1a81d529097eab163d74e6c790c408e86dd7d0c368f323'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -248,7 +248,7 @@ def cookies_parseref():
     return parsed_cookie
 
 def cookies_parsesco():
-    cookie_string = 'JSESSIONID=Nsu-bDs_OuqXtCTtFNiMs_P516CVkH3REdvoeZlC.hq-pa-web; cookiesession1=678B286E975DC7BEEAADB8484B95904B'
+    cookie_string = 'JSESSIONID=ho9OTTaygIs5HMcHSIYv3ntbN_cjxzLjbKSZTIvY.hq-pa-web; cookiesession1=678B286E975DC7BEEAADB8484B95904Bsss'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -258,7 +258,7 @@ def cookies_parsesco():
     return parsed_cookie
 
 def cookies_parseshi():
-    cookie_string = 'JSESSIONID=11unC5GvBhxKvYZ9kzYJQpv3YNFCt6k_5g37d0_O.uniformpa19; cookiesession1=678A3E2A5E1FAD39B02301BCD2843A6D'
+    cookie_string = 'JSESSIONID=98_0SGmdEF5_Ebskk99VxdAN378hY0Eim2hwwxij.uniformpa19; cookiesession1=678A3E2A5E1FAD39B02301BCD2843A6D'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -268,7 +268,7 @@ def cookies_parseshi():
     return parsed_cookie
 
 def cookies_parsesoa():
-    cookie_string = 'JSESSIONID=IOqtMAlAfFpRNauXg5gtADPVh053NjzxIk6Cc9Uc.pawebhst45a; citrix_ns_id_.south-ayrshire.gov.uk_%2F_wat=AAAAAAX6KeuivUzVPn0iu-8lucF5zprKXWn-dosKBhAbYUnFLs07RjyShbjBFQyhslAMMQRwJ_t2oDrGz-b3IP2BKS5L#guYNW/k4KwVU9addMBooLYQJNuQA&'
+    cookie_string = 'JSESSIONID=dF3zzmHjYSqN-EpX_z-kUppQ7dZ7Zju_-k1ScMP-.pawebhst45a; citrix_ns_id_.south-ayrshire.gov.uk_%2F_wat=AAAAAAXXM8JErA4l40p9wICe6BTAxBVdjIBgiCgAwnc92GGKWArrmW5-WIxev_jeObdfEnk-hSgdcFQtIlq9OEgAy4w5#guYNW/k4KwVU9addMBooLYQJNuQA&'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -277,7 +277,7 @@ def cookies_parsesoa():
     
     return parsed_cookie
 def cookies_parsesol():
-    cookie_string = 'JSESSIONID=UecRTealjOvSw5EX-EFw8-ftssVl7jjDCFCKK-Wp.ceridxpweblv'
+    cookie_string = 'JSESSIONID=Lz72eMMIdtcFzDlz82DVXs_1raxjbFgFpvAPaytz.ceridxpweblvs'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -286,7 +286,7 @@ def cookies_parsesol():
     
     return parsed_cookie
 def cookies_parsesti():
-    cookie_string = 'JSESSIONID=OYobiJPAb3Y7HiHCwHts1LSsH_oZyTr5lDKKeaan.paweblive'
+    cookie_string = 'JSESSIONID=DYy9KQVwjU6GaMdKJr_G4r5YaK8Xh_dy98-zF97t.paweblivesss'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -305,7 +305,7 @@ def cookies_parsewed():
     
     return parsed_cookie
 def cookies_parsewel():
-    cookie_string = 'JSESSIONID=EiDnS-mx4qkSj0mk_12vp3Uevs1KGc_yR2XHLiYX.ext-pa2web-02; _ga=GA1.3.1230909570.1679768054; _gid=GA1.3.341067379.1679768054; _gat=1'
+    cookie_string = 'JSESSIONID=rumQ3kCuvZDWaKcRd9RGUfBvh0rgnTrJ9E0pbBWM.ext-pa2web-02; _ga=GA1.3.1230909570.1679768054; _gid=GA1.3.341067379.1679768054; _gat=1'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
@@ -314,7 +314,7 @@ def cookies_parsewel():
     
     return parsed_cookie
 def cookies_parsewei():
-    cookie_string = 'JSESSIONID=IkQloHbcm8fFcX_t6bbFq87SVhZYzhJ_D5MaoJ41.idox-pa-web; __utmc=137587185; __utmz=137587185.1677490480.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=137587185.1495777887.1677490480.1679768066.1679786960.3; __utmt=1; __utmb=137587185.2.10.1679786960'
+    cookie_string = 'JSESSIONID=IklvQy5GPSNxw_EPNwuBRfqs-IFOZsCoyzSRPJsD.idox-pa-web; __utmc=137587185; __utmz=137587185.1677490480.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=137587185.1495777887.1677490480.1679786960.1679821298.4; __utmt=1; __utmb=137587185.2.10.1679821298'
     cookie = SimpleCookie()
     cookie.load(cookie_string)
     parsed_cookie = {}
