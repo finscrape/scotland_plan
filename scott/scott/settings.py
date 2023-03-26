@@ -86,21 +86,21 @@ ROTATING_PROXY_PAGE_RETRY_TIMES = 10
 RETRY_HTTP_CODES = [429,500, 502, 503, 504, 400, 408,403]
 
 DOWNLOADER_MIDDLEWARES = {
-    #'scott.middlewares.CustomProxyMiddleware': 100,
+    # 'scott.middlewares.CustomProxyMiddleware': 100,
     #'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 110,
     #'scott.middlewares.CustomProxyMiddleware': 100,
     
   
   'scott.middlewares.ScottDownloaderMiddleware': 543,
    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
-    #'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
     'scott.middlewares.TooManyRequestsRetryMiddleware': 543,
     'scrapy_fake_useragent.middleware.RandomUserAgentMiddleware': 400,
-    'scrapy_fake_useragent.middleware.RetryUserAgentMiddleware': 401,
+'scrapy_fake_useragent.middleware.RetryUserAgentMiddleware': 401,
   # 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 500, 
-  #  'rotating_proxies.middlewares.RotatingProxyMiddleware': 610,
-  #  'rotating_proxies.middlewares.BanDetectionMiddleware': 620,   
-      'scrapy_selenium.SeleniumMiddleware': 800
+#   'rotating_proxies.middlewares.RotatingProxyMiddleware': 610,
+#  'rotating_proxies.middlewares.BanDetectionMiddleware': 620,   
+#       # 'scrapy_selenium.SeleniumMiddleware': 800
 
 }
 #mongodump mongodb://6.tcp.eu.ngrok.io:13312/ -d scotland -o C:\Users\stagnator\Desktop\newdump
@@ -152,10 +152,10 @@ FEED_EXPORTERS = {
     'xlsx': 'scrapy_xlsx.XlsxItemExporter',
 }
 
-# from shutil import which
+from shutil import which
 
-# SELENIUM_DRIVER_NAME = 'chrome'
-# SELENIUM_DRIVER_EXECUTABLE_PATH = which('chromedriver')
-# SELENIUM_DRIVER_ARGUMENTS=['--adless']  # '--headless' if using chrome instead of firefox
+SELENIUM_DRIVER_NAME = 'chrome'
+SELENIUM_DRIVER_EXECUTABLE_PATH = which('chromedriver')
+SELENIUM_DRIVER_ARGUMENTS=['--adless']  # '--headless' if using chrome instead of firefox
 
 FEED_EXPORT_ENCODING = 'utf-8'
